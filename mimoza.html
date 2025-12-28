@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mimoza's Birthday Surprise 🌸</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #fdf1f6, #f7f4ff);
+      overflow-y: auto;
+    }
+    .page {
+      display: none;
+      min-height: 100vh;
+      padding: 40px 20px;
+      text-align: center;
+      max-width: 520px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      margin-bottom: 14px;
+    }
+    p {
+      font-size: 16px;
+      line-height: 1.7;
+    }
+    .button {
+      margin-top: 18px;
+      padding: 14px 22px;
+      font-size: 15px;
+      border: none;
+      border-radius: 22px;
+      background: linear-gradient(135deg, #f5c6d6, #e7d9ff);
+      cursor: pointer;
+      transition: 0.2s;
+      pointer-events: auto;
+    }
+    .button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+    }
+    .restaurants {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 24px;
+    }
+    .choice {
+      margin-top: 24px;
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<!-- START PAGE -->
+<div id="start" class="page" style="display:flex;">
+  <h1>Something mysterious is coming… ✨🐰</h1>
+  <p>
+    Just for a moment…<br>
+    slow down 🤍<br><br>
+    This isn’t a normal link.
+  </p>
+
+  <button class="button" onclick="startExperience()">Start ✨🎵</button>
+</div>
+
+<!-- MAIN PAGE -->
+<div id="main" class="page">
+  <h1>Hi Mimoza ✨</h1>
+  <p>
+    Mimoza 💗<br><br>
+    If you’re reading this… it worked 😌<br><br>
+    It’s me. Saify ✨<br><br>
+    I wanted to invite you in a way that feels a little unexpected.<br>
+    Something playful.<br>
+    Something that makes you smile before you even realize why 🤍<br><br>
+    This is your birthday invitation 💫<br>
+    And you get to choose the vibe.
+  </p>
+
+  <div class="restaurants">
+    <button class="button" onclick="choose('Epicurien')">Epicurien ✨<br><small>Elegant fine dining with live music</small></button>
+    <button class="button" onclick="choose('Lotus Club')">Lotus Club 🌙<br><small>High-energy night with dance shows</small></button>
+    <button class="button" onclick="choose('La Trattoria')">La Trattoria 🍝<br><small>Cozy, romantic, cute date vibe</small></button>
+  </div>
+
+  <div class="choice" id="choice"></div>
+</div>
+
+<!-- FINAL PAGE -->
+<div id="end" class="page">
+  <h1>💖 Bye bye Mimoza</h1>
+  <p>
+    I can’t wait to celebrate you 🤍<br><br>
+    See you on <strong>Friday, 9th of January</strong> ✨<br><br>
+    Love you always,
+  </p>
+</div>
+
+<!-- MUSIC -->
+<audio id="music" loop playsinline>
+  <source src="https://cdn.pixabay.com/download/audio/2022/12/20/audio_3f2c2a6d8f.mp3?filename=christmas-piano-ambient-126007.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function startExperience() {
+  const music = document.getElementById('music');
+  music.volume = 0.7;
+  music.play().catch(() => {});
+
+  document.getElementById('start').style.display = 'none';
+  document.getElementById('main').style.display = 'flex';
+  window.scrollTo(0,0);
+}
+
+function choose(place) {
+  const choice = document.getElementById('choice');
+  choice.innerHTML = `You chose ✨<br><strong>${place}</strong><br><br>I love that choice already 💕`;
+  choice.style.display = 'block';
+
+  window.location.href = `mailto:harraneharrane@gmail.com?subject=Mimoza's Birthday Choice 💗&body=I choose: ${place}`;
+
+  setTimeout(() => {
+    document.getElementById('main').style.display = 'none';
+    document.getElementById('end').style.display = 'flex';
+    window.scrollTo(0,0);
+  }, 2000);
+}
+</script>
+
+</body>
+</html>
